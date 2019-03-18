@@ -1,2 +1,2 @@
 # C-SHARP_Counting_Sort
-Implemented counting sort for array and linked list
+C# Counting sorting implementation for array and linked list.
