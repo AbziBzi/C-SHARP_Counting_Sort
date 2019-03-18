@@ -56,7 +56,7 @@ namespace CountingSort_OP
             }
 
             //Copies output to object
-            for(int i = 0; i < items.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
                 items[i] = output[i];
             }
