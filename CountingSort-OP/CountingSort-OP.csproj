@@ -43,9 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\..\..\Git Repositories\C-SHARP_Counting_Sort\CountingSort.cs">
-      <Link>CountingSort.cs</Link>
-    </Compile>
+    <Compile Include="CountingSort.cs" />
     <Compile Include="List.cs" />
     <Compile Include="MyArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
