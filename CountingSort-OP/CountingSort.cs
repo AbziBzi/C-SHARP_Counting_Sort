@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace CountingSort_OP
 {
@@ -11,33 +12,22 @@ namespace CountingSort_OP
         public static void Main(string[] args)
         {
             int seed = (int)DateTime.Now.Ticks & 0x0000FFFF;
-            TestOP(seed);
-            TestD(seed);
-
-            Console.ReadKey();
-        }
-
-        public static void TestOP(int seed)
-        {
             int n = 10;
             //Array sorting
-            DataArray data = new MyArray(n, 101);
+            DataArray data = new MyArray(n, seed);
             Console.WriteLine("[ARRAY] Counting sort");
             data.Print(data.Length);
             CountSort(data);
             data.Print(data.Length);
 
             //Linked list sorting
-            DataList listData = new MyLinkedList(n, 101);
+            DataList listData = new MyLinkedList(n, seed);
             Console.WriteLine("[List] Counting sort");
             listData.Print(listData.Length);
             CountSort(listData);
             listData.Print(listData.Length);
-        }
 
-        public static void TestD(int seed)
-        {
-
+            Console.ReadKey();
         }
 
         /// <summary>
