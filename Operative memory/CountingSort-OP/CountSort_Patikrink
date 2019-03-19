@@ -1,0 +1,44 @@
+        public static void CountSort(DataArray items)
+        {
+            if (items == null)
+                return;
+
+            MyDataArray output = new MyDataArray(items.Length);
+            int minValue = items[0];
+            int maxValue = items[0];
+
+            //Finds min and max values
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= minValue)
+                    minValue = items[i];
+                if (items[i] >= maxValue)
+                    maxValue = items[i];
+            }
+
+            //Counts frequencies
+            int[] counts = new int[maxValue - minValue + 1];
+            for (int i = 0; i < items.Length; i++)
+            {
+                counts[items[i] - minValue]++;
+            }
+
+            //Each element stores the sum of previous counts
+            for (int i = 1; i < counts.Length; i++)
+            {
+                counts[i] += counts[i - 1];
+            }
+
+            //Puts each element from items array to the right place using counts saved index
+            for (int i = 0; i < items.Length; i++)
+            {
+                output[counts[items[i] - minValue] - 1] = items[i];
+                counts[items[i] - minValue]--;
+            }
+
+            //Copies output to object
+            for (int i = 0; i < items.Length; i++)
+            {
+                items[i] = output[i];
+            }
+        }
