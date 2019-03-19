@@ -37,7 +37,7 @@ namespace CountingSort_OP
             length = n;
             Random rand = new Random(seed);
 
-            headNode = new Node(rand.Next(0, 10), null);
+            headNode = new Node(rand.Next(0, 100), null);
             currentNode = headNode;
 
             for(int i = 1; i < length; i++)

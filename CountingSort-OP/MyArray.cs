@@ -24,7 +24,7 @@ namespace CountingSort_OP
             Random rand = new Random(seed);
             for (int i = 0; i < length; i++)
             {
-                data[i] = rand.Next(0, 10);
+                data[i] = rand.Next(0, 100);
             }
         }
 

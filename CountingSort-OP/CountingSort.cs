@@ -10,23 +10,34 @@ namespace CountingSort_OP
     {
         public static void Main(string[] args)
         {
-            int seed = (int)DateTime.Now.Ticks;
+            int seed = (int)DateTime.Now.Ticks & 0x0000FFFF;
+            TestOP(seed);
+            TestD(seed);
 
+            Console.ReadKey();
+        }
+
+        public static void TestOP(int seed)
+        {
+            int n = 10;
             //Array sorting
-            DataArray data = new MyArray(10, 101);
+            DataArray data = new MyArray(n, 101);
             Console.WriteLine("[ARRAY] Counting sort");
             data.Print(data.Length);
             CountSort(data);
             data.Print(data.Length);
 
             //Linked list sorting
-            DataList listData = new MyLinkedList(10, 101);
+            DataList listData = new MyLinkedList(n, 101);
             Console.WriteLine("[List] Counting sort");
             listData.Print(listData.Length);
             CountSort(listData);
             listData.Print(listData.Length);
+        }
 
-            Console.ReadKey();
+        public static void TestD(int seed)
+        {
+
         }
 
         /// <summary>
@@ -55,10 +66,11 @@ namespace CountingSort_OP
             int[] counts = new int[maxValue - minValue + 2];
             for (int i = 0; i < items.Length; i++)
             {
-                counts[items[i] - minValue + 1]++;
+                counts[items[i] - minValue]++;
             }
 
             //Each element stores the sum of previous counts
+            counts[0]--;
             for (int i = 1; i < counts.Length; i++)
             {
                 counts[i] += counts[i - 1];
@@ -67,8 +79,7 @@ namespace CountingSort_OP
             //Puts each element from items array to the right place using counts saved index
             for (int i = 0; i < items.Length; i++)
             {
-                output[counts[items[i]] - 1] = items[i];
-                counts[items[i]]--;
+                output[counts[items[i] - minValue]--] = items[i];
             }
 
             //Copies output to object
@@ -92,10 +103,11 @@ namespace CountingSort_OP
             int[] counts = new int[maxValue - minValue + 2];
             for(list.Head(); list.NotNull(); list.Next())
             {
-                counts[list.Current() - minValue + 1]++;
+                counts[list.Current() - minValue]++;
             }
 
             //Each element stores the sum of previous counts
+            counts[0]--;
             for (int i = 1; i < counts.Length; i++)
             {
                 counts[i] += counts[i - 1];
@@ -103,8 +115,7 @@ namespace CountingSort_OP
 
             for (list.Head(); list.NotNull(); list.Next())
             {
-                output[counts[list.Current()] - 1] = list.Current();
-                counts[list.Current()]--;
+                output[counts[list.Current() - minValue]--] = list.Current();
             }
 
             //list = new MyLinkedList(output);
