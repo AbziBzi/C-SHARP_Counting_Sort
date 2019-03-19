@@ -116,25 +116,6 @@ namespace CountingSort_OP
 
             }
         }
-        /// <summary>
-        /// Abstract array class
-        /// </summary>
-        public abstract class DataArray
-        {
-            protected int length;
-            public int Length { get { return length; } }
-            public abstract int this[int index] { get; set; }
-
-            public void Print(int n)
-            {
-                for (int i = 0; i < n; i++)
-                {
-                    Console.WriteLine(" {0} ", this[i]);
-                }
-
-                Console.WriteLine();
-            }
-        }
 
         /// <summary>
         /// Abstract list class
@@ -160,6 +141,26 @@ namespace CountingSort_OP
                 for (int i = 1; i < n; i++)
                 {
                     Console.WriteLine(" {0} ", Next());
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        /// Abstract array class
+        /// </summary>
+        public abstract class DataArray
+        {
+            protected int length;
+            public int Length { get { return length; } }
+            public abstract int this[int index] { get; set; }
+
+            public void Print(int n)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    Console.WriteLine(" {0} ", this[i]);
                 }
 
                 Console.WriteLine();
